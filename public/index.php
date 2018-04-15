@@ -30,7 +30,7 @@ function require_auth($AUTH_USER='admin', $AUTH_PASS='test', $stop_here=true) {
 if(require_auth('live',$PW['live'],false) || require_auth('alive',$PW['live'],false)){ // main person is checking in
 
   if(touch($switch_file))
-    echo "OK, enjoy your life! Please check back in whenever possible. Otherwise the switch will trigger in $config_days_switch days: ".date('Y-m-d', strtotime("+$config_days_switch days"));
+    echo "OK, enjoy your life! Please check back in whenever possible. Otherwise the switch will trigger in $config_days_switch days: ".date('F d Y', strtotime("+$config_days_switch days"));
 
   else echo "Could not update the status file. Contact your server admin ASAP.";
 
