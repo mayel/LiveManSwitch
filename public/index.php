@@ -35,7 +35,7 @@ if(require_auth('live',$PW['live'],false) || require_auth('alive',$PW['live'],fa
   else echo "Could not update the status file. Contact your server admin ASAP.";
 
 }
-elseif(require_auth('test',$PW['live'],false)){ // main person is manually triggering the switch
+elseif(require_auth('test',$PW['test'],false)){ // main person is manually triggering the switch
 
   if(touch($switch_file, time() - (($config_days_switch+1) * 60 * 60 * 24)))
     echo "OK, you manually triggered the switch. Your friend will now have access.";
