@@ -60,9 +60,20 @@ elseif(require_auth('check',$PW['check'],true)){ // friend is checking status
 
     } else {
 
+	if(isset($_GET['download'])){
+
+		header('Content-Description: File Transfer');
+    	header('Content-Type: application/octet-stream');
+    	header('Content-Disposition: attachment; filename="'.basename($PAYLOAD_FILE).'"');
+    	readfile($PAYLOAD_FILE);
+    	exit();
+    }
+
       echo "Looks like your friend has last checked in $days_diff days ago on ". date("F d Y H:i:s", $alive_date). " UTC. Here is their message for you: <p>";
 
       echo $PAYLOAD;
+
+      if($PAYLOAD_FILE && file_exists($PAYLOAD_FILE)) echo "<p><a href='?download'>Download the File</a>";
     }
 
 
