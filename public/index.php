@@ -67,11 +67,11 @@ elseif(require_auth('check',$PW['check'],true)){ // friend is checking status
     	header('Content-Disposition: attachment; filename="'.basename($PAYLOAD_FILE).'"');
     	header('Content-Transfer-Encoding: binary'); // if not using a text file
     	header('Expires: 0');
-		header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-		header('Pragma: public');
-		header('Content-Length: ' . filesize($file));
-		ob_clean();
-        flush();
+      header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+      header('Pragma: public');
+      header('Content-Length: ' . filesize($PAYLOAD_FILE));
+      ob_clean();
+      flush();
     	readfile($PAYLOAD_FILE);
     	exit();
     }
